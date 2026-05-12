@@ -1,29 +1,27 @@
 # Power BI Sales Management Dashboard
 
-A 3-page interactive Power BI dashboard built on the AdventureWorks-style sales data model. Combines a star schema (Sales fact + Employee, Date, Product, Promotion, Sales Reviews dimensions), DAX measures for KPIs, and slicer-driven filtering for ad-hoc business exploration.
+A three-page interactive Power BI dashboard on an AdventureWorks-style sales data model. Star schema (Sales fact + Employee, Date, Product, Promotion, Sales Reviews dimensions), DAX measures for the KPIs, and slicer-driven filtering for ad-hoc exploration.
 
-**Tech stack:** Power BI Desktop · DAX · Star schema modeling
-
----
+**Stack:** Power BI Desktop · DAX · Star schema modeling
 
 ## What's in the dashboard
 
-### Page 1 — Sales Overview
+### Page 1: Sales Overview
 - KPI cards: Total Sales, Total Orders, Average Order Value, YoY Growth
 - Sales-over-time line chart with year/month drilldown
-- Sales by region (map visual)
+- Sales by region on a map visual
 - Top products by revenue
-- Filter slicers: Year, Sales Territory, Product Category
+- Slicers: Year, Sales Territory, Product Category
 
-### Page 2 — Sales Details
-- Employee performance scorecard (filtered to active sales employees via `Is Sales Employee = 1`)
-- Sales by employee with base rate vs. earned commission comparison
-- Promotion effectiveness — Sales Amount and Order Quantity by Promotion Type
+### Page 2: Sales Details
+- Employee performance scorecard, filtered to active sales staff via `Is Sales Employee = 1`
+- Sales by employee with base rate vs earned commission compared side by side
+- Promotion effectiveness: Sales Amount and Order Quantity by Promotion Type
 - Drill-through into individual employee detail
 
-### Page 3 — Salary Analysis
-- Employee compensation vs. performance review scores
-- Sales Reviews integration (1:1 relationship to Employee via EmployeeID → Employee Key)
+### Page 3: Salary Analysis
+- Employee compensation vs performance review scores
+- Sales Reviews integration via a 1:1 relationship (EmployeeID to Employee Key)
 - Outliers: highest performers by review score, lowest base rate
 - Salary distribution by Title and Sales Territory
 
@@ -44,7 +42,7 @@ A 3-page interactive Power BI dashboard built on the AdventureWorks-style sales 
 - **Promotion**: Promotion Key, Promotion Type, Promotion Name
 - **Sales Reviews**: EmployeeID, FirstName, JobTitle, LastName, Review Overall Score
 
-5 active relationships across the model. All many-to-one from Sales to dimensions, plus a 1:1 from Sales Reviews to Employee.
+Five active relationships across the model. All many-to-one from Sales to the dimensions, plus a 1:1 from Sales Reviews to Employee.
 
 ## Key DAX measures
 
@@ -64,23 +62,23 @@ YoY Growth = DIVIDE([Total Sales] - [Sales Previous Year], [Sales Previous Year]
 
 ## How to open
 
-1. Install [Power BI Desktop](https://powerbi.microsoft.com/desktop/) (Windows only — free)
-2. Open `sales_dashboard.pbix`
-3. The dashboard loads the embedded sample data; no external connections needed
+1. Install [Power BI Desktop](https://powerbi.microsoft.com/desktop/). Windows only, free.
+2. Open `sales_dashboard.pbix`.
+3. The dashboard loads the embedded sample data, no external connections needed.
 
 ## Screenshots
 
 Screenshots of each page live in `screenshots/`. Captured at 1920×1080 from Power BI Desktop.
 
-*(Note: screenshots will be added when the project is captured from a Windows machine.)*
+(Screenshots will be added when I have a Windows machine to capture them from.)
 
 ## What I learned
 
-- The star schema's whole point is making DAX measures cheap to write — when relationships are right, `SUM(Sales[Sales Amount])` filtered by any dimension column "just works."
-- Time intelligence functions like `SAMEPERIODLASTYEAR` only work if you have a proper Date table with a continuous date range marked as the table's date column.
-- Drill-through pages (right-click a data point → drill through) are a much better UX for "show me details on this thing" than cramming everything onto one page.
-- Slicer panel design matters: putting slicers in a consistent location across all pages keeps the filter context predictable for the user.
+- The whole point of a star schema is making DAX measures cheap to write. When the relationships are right, `SUM(Sales[Sales Amount])` filtered by any dimension column just works.
+- Time intelligence functions like `SAMEPERIODLASTYEAR` need a proper Date table with a continuous date range marked as the date column. If you skip that, half your time-based measures silently return blank.
+- Drill-through pages (right-click a data point, drill through) are a way better UX for "show me details on this thing" than cramming everything onto one page.
+- Slicer layout matters more than you'd think. Putting them in the same spot on every page keeps the filter context predictable.
 
 ---
 
-*Built as the final project for WCTC's Data Visualization course. Demonstrates star schema modeling, DAX measures, and interactive dashboard design — the foundation of any BI analyst's day-to-day work.*
+Built as the final project for WCTC's Data Visualization course.
