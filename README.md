@@ -4,6 +4,21 @@ A three-page interactive Power BI dashboard on an AdventureWorks-style sales dat
 
 **Stack:** Power BI Desktop · DAX · Star schema modeling
 
+## Quick links
+
+| | URL |
+|---|---|
+| **Download PBIX (raw)** | https://github.com/Damatnic/power-bi-sales-dashboard/raw/main/sales_dashboard.pbix |
+| **Portfolio case study** | https://damato-data.vercel.app/projects/power-bi-sales-dashboard |
+
+Clone this repo:
+
+```bash
+git clone https://github.com/Damatnic/power-bi-sales-dashboard.git
+cd power-bi-sales-dashboard
+# open sales_dashboard.pbix in Power BI Desktop
+```
+
 ## What's in the dashboard
 
 ### Page 1: Sales Overview
@@ -68,9 +83,17 @@ YoY Growth = DIVIDE([Total Sales] - [Sales Previous Year], [Sales Previous Year]
 
 ## Screenshots
 
-Screenshots of each page live in `screenshots/`. Captured at 1920×1080 from Power BI Desktop.
+Exports for the **portfolio site** live in the Next.js repo at  
+`damato-portfolio/public/projects/power-bi/` (`page-1-sales-overview.png`, etc.).  
+Right now those files are **layout placeholders**; swap them for real **1920×1080**
+Desktop exports when you capture from Windows.
 
-(Screenshots will be added when I have a Windows machine to capture them from.)
+Optional: add the same PNGs under `screenshots/` in **this** repo so GitHub browsers
+see them too — keep filenames aligned with the portfolio for consistency.
+
+**Capture checklist:** collapse Filters / Bookmarks panes, reset slicers to a clear
+story (e.g. latest full year), then **File → Export → Export current page as image**
+(or OS screenshot).
 
 ## What I learned
 
