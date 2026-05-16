@@ -8,12 +8,11 @@ The repo stores a **[Power BI Project](https://learn.microsoft.com/en-us/power-b
 
 ## Quick links
 
-| | URL |
-|---|---|
-| **Download ZIP** | https://github.com/Damatnic/power-bi-sales-dashboard/archive/refs/heads/main.zip |
-| **Portfolio case study** | https://damato-data.vercel.app/projects/power-bi-sales-dashboard |
+- **Download ZIP (full PBIP project):** [archive/main.zip](https://github.com/Damatnic/power-bi-sales-dashboard/archive/main.zip)
+- **Portfolio case study:** [damato-data.vercel.app/projects/power-bi-sales-dashboard](https://damato-data.vercel.app/projects/power-bi-sales-dashboard)
+- **Repository:** [github.com/Damatnic/power-bi-sales-dashboard](https://github.com/Damatnic/power-bi-sales-dashboard)
 
-Clone this repo:
+**Or clone:**
 
 ```bash
 git clone https://github.com/Damatnic/power-bi-sales-dashboard.git
