@@ -1,5 +1,12 @@
+# Power BI Project — local cache / machine settings (never commit)
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+
 # Power BI temp files
 *.pbix.bak
+
+# Exported single-file builds (optional local export from Desktop)
+# sales_dashboard.pbix
 
 # OS
 .DS_Store

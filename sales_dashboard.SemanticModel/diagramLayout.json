@@ -1,0 +1,99 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 50,
+            "y": 10.379960905680946
+          },
+          "nodeIndex": "Promotion",
+          "nodeLineageTag": "28c0e1cc-e117-4039-894a-d8f43e0ab548",
+          "size": {
+            "height": 393.18704284221525,
+            "width": 316.94670846394985
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 540.18429578579423,
+            "y": 60.182718336774769
+          },
+          "nodeIndex": "Sales",
+          "nodeLineageTag": "ffe38ab9-78fa-4795-87a1-b9eedf64b2e0",
+          "size": {
+            "height": 895.5485893416926,
+            "width": 294.41797283176584
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 1260.5725077408663,
+            "y": 78.850574712643677
+          },
+          "nodeIndex": "Employee",
+          "nodeLineageTag": "97eee1ae-7bc3-43aa-9aff-7a1e0f1ccbf0",
+          "size": {
+            "height": 830,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 919.40952292355644,
+            "y": 78.8040051192799
+          },
+          "nodeIndex": "Product",
+          "nodeLineageTag": "1c870db9-94cc-421e-9438-d6cacee40608",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 50.072020162780007,
+            "y": 530.2587315848516
+          },
+          "nodeIndex": "Date",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 1541.6780458808873,
+            "y": 80.185701619201069
+          },
+          "nodeIndex": "Sales Reviews",
+          "nodeLineageTag": "e159cb74-f304-451f-bce9-aa9a3abc14e9",
+          "size": {
+            "height": 207.16823406478574,
+            "width": 242.19226750261214
+          },
+          "zIndex": 6
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 97.6530612244898,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

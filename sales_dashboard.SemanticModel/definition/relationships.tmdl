@@ -1,0 +1,104 @@
+relationship 2803348e-9967-4890-9726-d086680a18f4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Sales.'Order Date'
+	toColumn: LocalDateTable_98378449-d733-46b8-899a-9a325d99ad6f.Date
+
+relationship 2eca9099-5a09-4713-8d2f-42b2b65205e9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Sales.'Due Date'
+	toColumn: LocalDateTable_1ff1a6cb-19c2-41f4-90a3-9de70542a3c5.Date
+
+relationship 53aedfc1-30b5-4e44-a225-f9eedddc7b9f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Sales.'Ship Date'
+	toColumn: LocalDateTable_19047687-f677-4a57-8b4f-9fb93696a33f.Date
+
+relationship 29b05401-aa8d-4880-9a91-47866742ed22
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Employee.'Hire Date'
+	toColumn: LocalDateTable_db2b0263-07ae-4974-89b0-75cf2b7d9347.Date
+
+relationship 562cb422-6dbc-453c-8c3d-2850fb2fefc0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Employee.'Birth Date'
+	toColumn: LocalDateTable_e569aa0e-9329-418d-95fd-3085724f91f1.Date
+
+relationship 0f959060-a6cf-42df-921c-115a881c6ea4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Employee.'Start Date'
+	toColumn: LocalDateTable_b0fe368f-a7a8-4443-964e-24906ba22105.Date
+
+relationship eab9eddd-f7b3-4b37-b12a-05200182184a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Employee.'End Date'
+	toColumn: LocalDateTable_d5aa8447-8762-4014-902e-b8bb7dfe378b.Date
+
+relationship cb32435b-9189-4856-b254-10ba7f8bebc7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Date.'Full Date'
+	toColumn: LocalDateTable_77c74767-00ab-416a-ac8a-20328fdc6186.Date
+
+relationship 7a4cc0c3-4c86-4b32-aacc-283f87dacc9b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Product.'Start Date'
+	toColumn: LocalDateTable_945c0a74-6a1d-4a73-bbfa-70dbcb33d713.Date
+
+relationship 9ca9d349-322f-45fa-a690-46e32bc1cde0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Product.'End Date'
+	toColumn: LocalDateTable_90deeb6c-e271-414d-8330-ef4c369a92d7.Date
+
+relationship 5639e31b-6108-4b45-9404-b07086cb2909
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Promotion.'Start Date'
+	toColumn: LocalDateTable_962fe748-3c65-4cf0-bdd4-1d5c14d8e552.Date
+
+relationship 2013c5cc-0701-456c-9b3a-4f65de62eed3
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Promotion.'End Date'
+	toColumn: LocalDateTable_9e76dfb5-8fb1-4301-a05e-50977e84b64a.Date
+
+relationship ee7dde06-7a22-431a-a2a9-f1c84ab83bb7
+	fromColumn: Sales.'Due Date Key'
+	toColumn: Date.'Date Key'
+
+	annotation PBI_IsFromSource = FS
+
+relationship 2679675e-389e-4028-b392-57ccb434f82f
+	isActive: false
+	fromColumn: Sales.'Order Date Key'
+	toColumn: Date.'Date Key'
+
+	annotation PBI_IsFromSource = FS
+
+relationship 345d22b8-e05c-42cc-860b-fa76526daac1
+	isActive: false
+	fromColumn: Sales.'Ship Date Key'
+	toColumn: Date.'Date Key'
+
+	annotation PBI_IsFromSource = FS
+
+relationship 4d68c2fb-acf9-480a-a2c1-03f126089621
+	fromColumn: Sales.'Employee Key'
+	toColumn: Employee.'Employee Key'
+
+	annotation PBI_IsFromSource = FS
+
+relationship 433e2f1f-36b3-45d5-a816-a5b5e3c4f70f
+	fromColumn: Sales.'Product Key'
+	toColumn: Product.'Product Key'
+
+	annotation PBI_IsFromSource = FS
+
+relationship cf3ece3f-8d78-4338-b3f8-897c39e93c5a
+	fromColumn: Sales.'Promotion Key'
+	toColumn: Promotion.'Promotion Key'
+
+	annotation PBI_IsFromSource = FS
+
+relationship 414aa410-9d39-72e6-1f7c-a022273d6e75
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'Sales Reviews'.EmployeeID
+	toColumn: Employee.'Employee Key'
+

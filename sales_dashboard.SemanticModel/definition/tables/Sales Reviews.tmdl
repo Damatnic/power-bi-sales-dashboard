@@ -1,0 +1,59 @@
+table 'Sales Reviews'
+	lineageTag: e159cb74-f304-451f-bce9-aa9a3abc14e9
+
+	column EmployeeID
+		dataType: int64
+		formatString: 0
+		lineageTag: bf4a492a-7d99-4a32-879c-30598c43f244
+		summarizeBy: none
+		sourceColumn: EmployeeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastName
+		dataType: string
+		lineageTag: 54833dad-eee6-4392-a7d2-833e1f602650
+		summarizeBy: none
+		sourceColumn: LastName
+
+		annotation SummarizationSetBy = Automatic
+
+	column FirstName
+		dataType: string
+		lineageTag: 9ace4d84-b5b5-4b6a-aa9b-f89d53047a9b
+		summarizeBy: none
+		sourceColumn: FirstName
+
+		annotation SummarizationSetBy = Automatic
+
+	column JobTitle
+		dataType: string
+		lineageTag: bb563a94-5d1e-4d5a-b637-3577d260992d
+		summarizeBy: none
+		sourceColumn: JobTitle
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Review Overall Score'
+		dataType: double
+		lineageTag: fdfbb787-6998-4659-b82a-36b974c7b55f
+		summarizeBy: sum
+		sourceColumn: Review Overall Score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Sales Reviews' = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\damat\Downloads\Week 5 Lab - Sales People reviews (1).xlsx"), null, true),
+				    Sheet1_Sheet = Source{[Item="Sheet1",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"EmployeeID", Int64.Type}, {"LastName", type text}, {"FirstName", type text}, {"JobTitle", type text}, {"Review Overall Score", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

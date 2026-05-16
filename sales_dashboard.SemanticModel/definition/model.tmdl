@@ -1,0 +1,36 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["Sales","Employee","Date","Product","Promotion","Sales Reviews"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Sales
+ref table DateTableTemplate_269721b9-9f98-4087-9252-184e7b2ec6e7
+ref table LocalDateTable_98378449-d733-46b8-899a-9a325d99ad6f
+ref table LocalDateTable_1ff1a6cb-19c2-41f4-90a3-9de70542a3c5
+ref table LocalDateTable_19047687-f677-4a57-8b4f-9fb93696a33f
+ref table Employee
+ref table LocalDateTable_db2b0263-07ae-4974-89b0-75cf2b7d9347
+ref table LocalDateTable_e569aa0e-9329-418d-95fd-3085724f91f1
+ref table LocalDateTable_b0fe368f-a7a8-4443-964e-24906ba22105
+ref table LocalDateTable_d5aa8447-8762-4014-902e-b8bb7dfe378b
+ref table Date
+ref table LocalDateTable_77c74767-00ab-416a-ac8a-20328fdc6186
+ref table Product
+ref table LocalDateTable_945c0a74-6a1d-4a73-bbfa-70dbcb33d713
+ref table LocalDateTable_90deeb6c-e271-414d-8330-ef4c369a92d7
+ref table Promotion
+ref table LocalDateTable_962fe748-3c65-4cf0-bdd4-1d5c14d8e552
+ref table LocalDateTable_9e76dfb5-8fb1-4301-a05e-50977e84b64a
+ref table 'Sales Reviews'
+
+ref cultureInfo en-US
+

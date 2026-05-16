@@ -2,13 +2,15 @@
 
 A three-page interactive Power BI dashboard on an AdventureWorks-style sales data model. Star schema (Sales fact + Employee, Date, Product, Promotion, Sales Reviews dimensions), DAX measures for the KPIs, and slicer-driven filtering for ad-hoc exploration.
 
-**Stack:** Power BI Desktop · DAX · Star schema modeling
+**Stack:** Power BI Desktop · DAX · Star schema modeling · PBIP (Power BI Project)
+
+The repo stores a **[Power BI Project](https://learn.microsoft.com/en-us/power-bi/developer/projects/projects-overview)** (`sales_dashboard.pbip`) so the report theme and definitions are plain text under Git — including the custom **`DamatoProfessional`** dark theme aligned with my portfolio site.
 
 ## Quick links
 
 | | URL |
 |---|---|
-| **Download PBIX (raw)** | https://github.com/Damatnic/power-bi-sales-dashboard/raw/main/sales_dashboard.pbix |
+| **Download ZIP** | https://github.com/Damatnic/power-bi-sales-dashboard/archive/refs/heads/main.zip |
 | **Portfolio case study** | https://damato-data.vercel.app/projects/power-bi-sales-dashboard |
 
 Clone this repo:
@@ -16,8 +18,10 @@ Clone this repo:
 ```bash
 git clone https://github.com/Damatnic/power-bi-sales-dashboard.git
 cd power-bi-sales-dashboard
-# open sales_dashboard.pbix in Power BI Desktop
+# Open sales_dashboard.pbip in Power BI Desktop (Windows), or open definition.pbir inside sales_dashboard.Report/
 ```
+
+Need a single `.pbix` file for sharing? Open the project in Desktop and use **File → Save As → Power BI Desktop files (*.pbix)**.
 
 ## What's in the dashboard
 
@@ -77,9 +81,9 @@ YoY Growth = DIVIDE([Total Sales] - [Sales Previous Year], [Sales Previous Year]
 
 ## How to open
 
-1. Install [Power BI Desktop](https://powerbi.microsoft.com/desktop/). Windows only, free.
-2. Open `sales_dashboard.pbix`.
-3. The dashboard loads the embedded sample data, no external connections needed.
+1. Install [Power BI Desktop](https://powerbi.microsoft.com/desktop/). Windows only, free. Enable **Preview features → Power BI Project (.pbip) save option** if your build asks for it.
+2. Clone or unzip this repo, then open **`sales_dashboard.pbip`** (or **`sales_dashboard.Report/definition.pbir`**) from the repo root.
+3. The semantic model loads embedded sample data — no external connections needed.
 
 ## Screenshots
 

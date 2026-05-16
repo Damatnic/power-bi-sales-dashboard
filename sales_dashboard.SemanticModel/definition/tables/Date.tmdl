@@ -1,0 +1,183 @@
+table Date
+	lineageTag: 7a182e88-21fc-4059-b6ad-93e085b4c7b2
+
+	column 'Date Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: 11fde98c-1a64-4604-a5a3-2ef72d90b2c2
+		summarizeBy: none
+		sourceColumn: Date Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Full Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: cb638f91-8aef-4855-89c4-0416965b524b
+		summarizeBy: none
+		sourceColumn: Full Date
+
+		variation Variation
+			isDefault
+			relationship: cb32435b-9189-4856-b254-10ba7f8bebc7
+			defaultHierarchy: LocalDateTable_77c74767-00ab-416a-ac8a-20328fdc6186.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Day Number Of Week'
+		dataType: int64
+		formatString: 0
+		lineageTag: 10432ec9-686c-4565-a0d1-8df665c7efc8
+		summarizeBy: sum
+		sourceColumn: Day Number Of Week
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day Name'
+		dataType: string
+		lineageTag: 6dddc6e7-9b13-4db3-9d9c-3e20010d5cb3
+		summarizeBy: none
+		sourceColumn: Day Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day Number Of Month'
+		dataType: int64
+		formatString: 0
+		lineageTag: 24e04328-ac30-40e4-a56b-e490626290aa
+		summarizeBy: sum
+		sourceColumn: Day Number Of Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day Number Of Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: 0eed2039-6a5c-4df2-b780-50ab2aae9417
+		summarizeBy: sum
+		sourceColumn: Day Number Of Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Week Number Of Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: 623e6ca0-dfaa-4f05-9940-d6dce8515990
+		summarizeBy: sum
+		sourceColumn: Week Number Of Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Name'
+		dataType: string
+		lineageTag: 07fb1695-9306-4c65-bc66-9277474e8566
+		summarizeBy: none
+		sourceColumn: Month Name
+		sortByColumn: 'Month Number'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 81b4be67-a202-4f47-b3c9-fe4171d5b580
+		summarizeBy: sum
+		sourceColumn: Month Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Calendar Quarter'
+		dataType: int64
+		formatString: 0
+		lineageTag: f4de0eb5-61c0-4ccf-b348-6c39fff79e6b
+		summarizeBy: sum
+		sourceColumn: Calendar Quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Calendar Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: 66de39ed-5d52-407b-8f18-f7c65f165679
+		summarizeBy: sum
+		sourceColumn: Calendar Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Calendar Semester'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4b2af9b5-feea-430c-b3fc-a86fef330362
+		summarizeBy: sum
+		sourceColumn: Calendar Semester
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Quarter'
+		dataType: int64
+		formatString: 0
+		lineageTag: a92649bd-0756-4c07-bc0b-5b584ed8d2f1
+		summarizeBy: sum
+		sourceColumn: Fiscal Quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: 371f22a7-7c01-493f-9d93-b2b342766f85
+		summarizeBy: sum
+		sourceColumn: Fiscal Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Semester'
+		dataType: int64
+		formatString: 0
+		lineageTag: 68d65f3e-1643-4f11-a463-03b6ea6a2b26
+		summarizeBy: sum
+		sourceColumn: Fiscal Semester
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Date = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("bitsql.wctc.edu"),
+				    AdventureWorksDW_DataViz_36_ND = Source{[Name="AdventureWorksDW_DataViz_36_ND"]}[Data],
+				    dbo_DimDate = AdventureWorksDW_DataViz_36_ND{[Schema="dbo",Item="DimDate"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(dbo_DimDate,{
+				        "SpanishDayNameOfWeek", "FrenchDayNameOfWeek",
+				        "SpanishMonthName", "FrenchMonthName"
+				    }),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns",{
+				        {"DateKey", "Date Key"},
+				        {"FullDateAlternateKey", "Full Date"},
+				        {"DayNumberOfWeek", "Day Number Of Week"},
+				        {"EnglishDayNameOfWeek", "Day Name"},
+				        {"DayNumberOfMonth", "Day Number Of Month"},
+				        {"DayNumberOfYear", "Day Number Of Year"},
+				        {"WeekNumberOfYear", "Week Number Of Year"},
+				        {"EnglishMonthName", "Month Name"},
+				        {"MonthNumberOfYear", "Month Number"},
+				        {"CalendarQuarter", "Calendar Quarter"},
+				        {"CalendarYear", "Calendar Year"},
+				        {"CalendarSemester", "Calendar Semester"},
+				        {"FiscalQuarter", "Fiscal Quarter"},
+				        {"FiscalYear", "Fiscal Year"},
+				        {"FiscalSemester", "Fiscal Semester"}
+				    })
+				in
+				    #"Renamed Columns"
+
+	changedProperty = Name
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

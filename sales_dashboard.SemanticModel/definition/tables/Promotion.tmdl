@@ -1,0 +1,134 @@
+table Promotion
+	lineageTag: 28c0e1cc-e117-4039-894a-d8f43e0ab548
+
+	column 'Promotion Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: f7ea3000-ff5f-4f7c-8a48-1ee41a3986e5
+		summarizeBy: none
+		sourceColumn: Promotion Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Promotion Alternate Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: 47843aba-cbaa-4298-87b9-f34bafc78055
+		summarizeBy: count
+		sourceColumn: Promotion Alternate Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Promotion Name'
+		dataType: string
+		lineageTag: 3ba02b6f-c9eb-451b-955d-ee24767901bc
+		summarizeBy: none
+		sourceColumn: Promotion Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Discount Pct'
+		dataType: double
+		lineageTag: 28dfed4e-bcba-4041-babb-6b83bf905d40
+		summarizeBy: sum
+		sourceColumn: Discount Pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Promotion Type'
+		dataType: string
+		lineageTag: c8c3e5c6-617a-4ec1-a7ad-7df026afaa4e
+		summarizeBy: none
+		sourceColumn: Promotion Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Promotion Category'
+		dataType: string
+		lineageTag: 361b2d42-4853-4a76-97af-0f470324353c
+		summarizeBy: none
+		sourceColumn: Promotion Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Start Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7913f3c1-3467-4138-a555-eb94ecba09e5
+		summarizeBy: none
+		sourceColumn: Start Date
+
+		variation Variation
+			isDefault
+			relationship: 5639e31b-6108-4b45-9404-b07086cb2909
+			defaultHierarchy: LocalDateTable_962fe748-3c65-4cf0-bdd4-1d5c14d8e552.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'End Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: c53473fe-6c1a-467d-b9c4-2bea303f6c2c
+		summarizeBy: none
+		sourceColumn: End Date
+
+		variation Variation
+			isDefault
+			relationship: 2013c5cc-0701-456c-9b3a-4f65de62eed3
+			defaultHierarchy: LocalDateTable_9e76dfb5-8fb1-4301-a05e-50977e84b64a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Min Qty'
+		dataType: int64
+		formatString: 0
+		lineageTag: f04da2a0-be25-43bd-a313-627994b8059c
+		summarizeBy: sum
+		sourceColumn: Min Qty
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Max Qty'
+		dataType: int64
+		formatString: 0
+		lineageTag: d1c99728-c38a-4ec1-ba5d-5d8537853b25
+		summarizeBy: sum
+		sourceColumn: Max Qty
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Promotion = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("bitsql.wctc.edu"),
+				    AdventureWorksDW_DataViz_36_ND = Source{[Name="AdventureWorksDW_DataViz_36_ND"]}[Data],
+				    dbo_DimPromotion = AdventureWorksDW_DataViz_36_ND{[Schema="dbo",Item="DimPromotion"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(dbo_DimPromotion,{
+				        "SpanishPromotionName", "FrenchPromotionName",
+				        "SpanishPromotionType", "FrenchPromotionType",
+				        "SpanishPromotionCategory", "FrenchPromotionCategory"
+				    }),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns",{
+				        {"PromotionKey", "Promotion Key"},
+				        {"PromotionAlternateKey", "Promotion Alternate Key"},
+				        {"EnglishPromotionName", "Promotion Name"},
+				        {"EnglishPromotionType", "Promotion Type"},
+				        {"EnglishPromotionCategory", "Promotion Category"},
+				        {"DiscountPct", "Discount Pct"},
+				        {"MinQty", "Min Qty"},
+				        {"MaxQty", "Max Qty"},
+				        {"StartDate", "Start Date"},
+				        {"EndDate", "End Date"}
+				    })
+				in
+				    #"Renamed Columns"
+
+	changedProperty = Name
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
